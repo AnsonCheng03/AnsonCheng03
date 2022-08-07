@@ -1,20 +1,18 @@
 var currentlyProcessingCall = false;
 let isChromium = !!window.chrome;
-const objparent = document.querySelector('.Skills');
-const obj = document.querySelector('.skilllists');
+const descmelst = document.querySelector('.descme');
 const objtotrans = document.querySelector('.skilllists .flexbox');
-const nextsection = document.querySelector('.Contact');
 const navtxt = document.querySelector('nav h1');
 
 function scrollbox() {
-    console.log("a")
-    /* Trans X when scroll*/
     const objwidth = objtotrans.childElementCount * objtotrans.firstElementChild.offsetWidth;
-    const distancecanmove = nextsection.getBoundingClientRect().top - objparent.getBoundingClientRect().top;
-    const DistanceMoved = obj.getBoundingClientRect().top - objparent.getBoundingClientRect().top - 70 * window.innerHeight / 100;
+    const distancecanmove = descmelst.lastElementChild.getBoundingClientRect().top - descmelst.firstElementChild.getBoundingClientRect().top;
+    var DistanceMoved = -descmelst.getBoundingClientRect().top
+    DistanceMoved = DistanceMoved > distancecanmove  ? distancecanmove : DistanceMoved < 0 ? 0 : DistanceMoved;
 
-    var MoveDist = DistanceMoved / (distancecanmove - 70 / 100 * window.innerHeight) * (objwidth);
-    if (MoveDist < 0) MoveDist = 0;
+    console.log(DistanceMoved);
+    var MoveDist = DistanceMoved / distancecanmove * (objwidth - window.innerWidth);
+
     objtotrans.style.transform = "translateX(-" + MoveDist + "px)";
 }
 
@@ -28,6 +26,9 @@ document.documentElement.addEventListener('mouseleave', () => {
 
 
 window.scrollTo(0, 0);
+document.querySelector('.self-intro').appendChild(document.querySelector(".Contact .container div").cloneNode(true));
+
+
 setTimeout(function () {
     document.querySelector('.loader .background').style.transform = "rotate(360deg) scale(0)";
 }, 500);
@@ -61,22 +62,26 @@ new IntersectionObserver((entries) => {
         if (entry.isIntersecting) {
             window.removeEventListener('resize', scrollbox);
             window.removeEventListener('scroll', scrollbox);
+            if(!isChromium) navtxt.style.fontSize = 0;
             navtxt.style.opacity = 0.2;
             setTimeout(function () {
                 navtxt.innerHTML = "Education & Working Exp.";
                 navtxt.style.borderColor = "#47bcd4";
                 navtxt.style.opacity = 1;
+                if(!isChromium) navtxt.style.fontSize = "1.5rem";
             }, 350);
         } else {
-
             window.addEventListener('resize', scrollbox);
             window.addEventListener('scroll', scrollbox);
+            if(!isChromium) navtxt.style.fontSize = 0;
             navtxt.style.opacity = 0.2;
             setTimeout(function () {
                 navtxt.style.borderColor = "#4831d4";
                 navtxt.innerHTML = "Skills";
                 navtxt.style.opacity = 1;
+                if(!isChromium) navtxt.style.fontSize = "1.5rem";
             }, 350);
         }
     }
 }).observe(document.querySelector('.Education'));
+
