@@ -5,12 +5,13 @@ function scrollbox() {
     const objtotrans = document.querySelector('.skilllists .flexbox');
     const nextsection = document.querySelector('.Contact');
 
-    const objwidth = objtotrans.childElementCount * objtotrans.firstElementChild.offsetWidth;
+    const objwidth = objtotrans.lastElementChild.getBoundingClientRect().right - objtotrans.firstElementChild.getBoundingClientRect().left;
     const distancecanmove = nextsection.getBoundingClientRect().top - objparent.getBoundingClientRect().top;
     const DistanceMoved = obj.getBoundingClientRect().top - objparent.getBoundingClientRect().top - 70 * window.innerHeight / 100;
 
-    var MoveDist = DistanceMoved / (distancecanmove - 70 / 100 * window.innerHeight) * (objwidth);
+    var MoveDist = DistanceMoved / (distancecanmove - 70 / 100 * window.innerHeight) * (objwidth + 4/3 *window.innerWidth);
     if (MoveDist < 0) MoveDist = 0;
+    console.log()
     objtotrans.style.transform = "translateX(-" + MoveDist + "px)";
 
     const navtxt = document.querySelector('nav h1');
