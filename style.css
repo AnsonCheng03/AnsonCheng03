@@ -14,6 +14,37 @@ h1 {
     margin: 0;
 }
 
+.loader {
+    position: fixed;
+    top: 0;
+    left: 0;
+    height: 100vh;
+    width: 100vw;
+    z-index: 99;
+
+    background: linear-gradient(to right, #ff9068, #fd746c); 
+    
+    display: flex;
+    align-items: center;
+    text-align: center;
+
+    opacity: 1;
+    transition: opacity 0.5s ease-in-out;
+}
+
+.loader .background {
+    display: block;
+    font-size: 50px;
+    width: 120px;
+    margin: 0 auto;
+    line-height: 120px;
+    text-align: center;
+    color: #fd746c;
+    background: #fff;
+    clip-path: polygon(25% 5%, 75% 5%, 100% 50%, 75% 95%, 25% 95%, 0% 50%);
+    transition: all 1s ease-in-out;
+}
+
 /* First Section */
 
 .self-intro {
