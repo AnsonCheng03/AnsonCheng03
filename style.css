@@ -146,6 +146,7 @@ h1 {
     animation-delay: 1.5s;
     background-position: -500%;
     background-clip: text;
+    -webkit-background-clip: text;
     -webkit-text-fill-color: rgba(255, 255, 255, 0);
 }
 

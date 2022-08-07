@@ -1,0 +1,32 @@
+{
+    "theme_color": "#f69435",
+    "background_color": "#f69435",
+    "display": "fullscreen",
+    "scope": "/",
+    "start_url": "/index.html",
+    "name": "Anson Cheng's Portfolio",
+    "short_name": "Portfolio",
+    "description": "Hi, I\u2019m @AnsonCheng03. I\u2019m looking to collaborate on Swift, C, C#, HTML5, Javascript, CSS3, PHP, Bash.",
+    "icons": [
+        {
+            "src": "/icon/icon-192x192.png",
+            "sizes": "192x192",
+            "type": "image/png"
+        },
+        {
+            "src": "/icon/icon-256x256.png",
+            "sizes": "256x256",
+            "type": "image/png"
+        },
+        {
+            "src": "/icon/icon-384x384.png",
+            "sizes": "384x384",
+            "type": "image/png"
+        },
+        {
+            "src": "/icon/icon-512x512.png",
+            "sizes": "512x512",
+            "type": "image/png"
+        }
+    ]
+}
