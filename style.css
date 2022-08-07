@@ -18,8 +18,8 @@ h1 {
     position: fixed;
     top: 0;
     left: 0;
-    height: 100vh;
-    width: 100vw;
+    bottom: 0;
+    right: 0;
     z-index: 99;
 
     background: linear-gradient(to right, #ff9068, #fd746c); 
@@ -145,7 +145,7 @@ nav div {
 
 nav h1 {
     margin-left: 5vw;
-    width: 90vw;
+
     padding: 20px 30px;
     border: solid #47bcd4 5px;
     border-width: 0 0 0 5px;
@@ -431,7 +431,7 @@ nav h1 {
 
 @keyframes bounce {
     0%   { transform: scale(1) translateY(0); }
-    60%  { transform: scale(1.5)   translateY(20px);}
+    60%  { transform: scale(1.25)   translateY(20px);}
     100% { transform: scale(1) translateY(0);}
 }
 

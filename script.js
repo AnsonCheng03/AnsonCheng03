@@ -26,12 +26,12 @@ document.addEventListener('scroll', scrollbox);
 
 setTimeout(function() {
     const obj = document.querySelector('.loader .background').style.transform = "rotate(3600deg) scale(0)";
-}, 1500);
+}, 500);
 
 setTimeout(function() {
     const obj = document.querySelector('.loader').style.opacity = 0;
-}, 2000);
+}, 1000);
 
 setTimeout(function() {
     const obj = document.querySelector('.loader').remove();
-}, 2500);
+}, 1500);
