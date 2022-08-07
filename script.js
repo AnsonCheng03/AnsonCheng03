@@ -9,7 +9,7 @@ function scrollbox() {
     const distancecanmove = nextsection.getBoundingClientRect().top - objparent.getBoundingClientRect().top;
     const DistanceMoved = obj.getBoundingClientRect().top - objparent.getBoundingClientRect().top - 70 * window.innerHeight / 100;
 
-    var MoveDist = DistanceMoved / (distancecanmove - 70 / 100 * window.innerHeight) * (objwidth + 4/3 *window.innerWidth);
+    var MoveDist = DistanceMoved / (distancecanmove - 70 / 100 * window.innerHeight) * (objwidth + 4 / 3 * window.innerWidth);
     if (MoveDist < 0) MoveDist = 0;
     console.log()
     objtotrans.style.transform = "translateX(-" + MoveDist + "px)";
@@ -20,7 +20,7 @@ function scrollbox() {
             navtxt.style.fontSize = 0;
             navtxt.style.opacity = 0.2;
             setTimeout(function () {
-                navtxt.style.borderColor= "#4831d4";
+                navtxt.style.borderColor = "#4831d4";
                 navtxt.innerHTML = "Skills";
                 navtxt.style.fontSize = "1.5rem";
                 navtxt.style.opacity = 1;
@@ -31,7 +31,7 @@ function scrollbox() {
             navtxt.style.fontSize = 0;
             navtxt.style.opacity = 0.2;
             setTimeout(function () {
-                navtxt.style.borderColor= "#47bcd4";
+                navtxt.style.borderColor = "#47bcd4";
                 navtxt.innerHTML = "Education & Working Exp.";
                 navtxt.style.fontSize = "1.5rem";
                 navtxt.style.opacity = 1;
@@ -56,7 +56,11 @@ setTimeout(function () {
 }, 1500);
 
 
-document.addEventListener("mousemove", (e) => {
+window.addEventListener("mousemove", (e) => {
+    document.querySelector("#cursor").style.display = "unset";
     document.querySelector("#cursor").style.setProperty('--cursorpx', e.clientX + 'px, ' + e.clientY + 'px');
-    document.querySelector("#cursor").style.setProperty('--cursorborderpx', e.clientX + 'px, ' + e.clientY + 'px');
 });
+
+document.documentElement.addEventListener('mouseleave', () => {
+    document.querySelector("#cursor").style.display = "none";
+})

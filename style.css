@@ -52,6 +52,10 @@ h1 {
     transition: all 0.75s ease-in-out;
 }
 
+#cursor {
+    display: none;
+}
+
 #cursor::before {
     content: "";
     position: fixed;
@@ -78,7 +82,7 @@ h1 {
     pointer-events: none;
     transition: all 0.5s ease-out;
     z-index: 998;
-    transform: translate(var(--cursorborderpx));
+    transform: translate(var(--cursorpx));
 }
 
 
@@ -102,6 +106,12 @@ h1 {
 .greetings {
     padding-top: 40vh;
     margin-left: 20%;
+}
+
+.greetings a {
+    display: inline-block;
+    animation: wavehand 1s infinite;
+    margin: 0 5px 0 2px;
 }
 
 .self-intro h1 {
@@ -128,7 +138,15 @@ h1 {
     font-size: 1rem;
     margin-left: 20%;
     text-transform: Uppercase;
+
+    background: linear-gradient(90deg, #90EE90, #fff, #000);
+    background-repeat: no-repeat;
+    background-size: 80%;
+    animation: shinetxt 10s infinite;
+    background-clip: text;
+    -webkit-text-fill-color: rgba(255, 255, 255, 0);
 }
+
 
 .hinttext {
     position: absolute;
@@ -146,6 +164,16 @@ h1 {
     transform: rotate(45deg);
 }
 
+@keyframes wavehand {
+    0%, 100% {
+        transform: rotate(5deg);
+    }
+
+    50% {
+        transform: rotate(25deg);
+    }
+}
+
 @keyframes blink {
     0% {
         opacity: 0;
@@ -157,6 +185,21 @@ h1 {
 
     100% {
         opacity: 0;
+    }
+}
+
+@keyframes shinetxt {
+    0% {
+        background-position: -500%;
+    }
+
+    15%,
+    95% {
+        background-position: 0%;
+    }
+
+    100% {
+        background-position: 500%;
     }
 }
 
@@ -303,8 +346,8 @@ nav h1 {
     border-width: 3px 0 0 0;
 }
 
-.card:hover .card-content  {
-   background-color: rgb(236, 236, 236);
+.card:hover .card-content {
+    background-color: rgb(236, 236, 236);
 }
 
 .card:nth-child(2) .card-content {
@@ -473,16 +516,12 @@ nav h1 {
 }
 
 @keyframes bounce {
-    0% {
+    0%,100% {
         transform: scale(1) translateY(0);
     }
 
     60% {
         transform: scale(1.25) translateY(20px);
-    }
-
-    100% {
-        transform: scale(1) translateY(0);
     }
 }
 
