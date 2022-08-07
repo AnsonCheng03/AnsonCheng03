@@ -3,12 +3,14 @@ body {
     margin: 0;
     padding: 0;
     min-height: 100vh;
-    width: 100vw;
+    width: 100%;
     scroll-snap-type: y mandatory;
+    -webkit-scroll-snap-type: y mandatory;
+    overscroll-behavior: none;
+    -webkit-overflow-scrolling: touch;
     font-family: 'Helvetica Neue', sans-serif;
     background: rgb(250, 250, 250);
     cursor: none;
-    scroll-behavior: smooth;
 }
 
 * {
@@ -90,8 +92,8 @@ h1 {
 /* First Section */
 
 .self-intro {
-    height: 150vh;
-    width: 100vw;
+    height: 110vh;
+  width: 100%;
     color: #fff;
     background: linear-gradient(to right, #0f2027, #203a43, #2c5364);
     mask:
@@ -117,7 +119,9 @@ h1 {
 
 .self-intro h1 {
     scroll-snap-align: center;
+    -webkit-scroll-snap-align: center;
     scroll-snap-stop: always;
+    -webkit-scroll-snap-stop: always;
     display: block;
     font-size: 2rem;
     margin-left: 20%;
@@ -169,7 +173,9 @@ h1 {
 }
 
 @keyframes wavehand {
-    0%, 100% {
+
+    0%,
+    100% {
         transform: rotate(5deg);
     }
 
@@ -197,7 +203,7 @@ h1 {
         background-position: -500%;
     }
 
-    10%{
+    10% {
         background-position: -50%;
     }
 
@@ -206,7 +212,7 @@ h1 {
         background-position: -25%;
     }
 
-    85%{
+    85% {
         background-position: 0%;
     }
 
@@ -219,15 +225,13 @@ h1 {
 /* Nav Bar */
 
 nav {
-    scroll-snap-align: start;
-    scroll-snap-stop: always;
     position: sticky;
     top: 0;
     display: block;
     font-weight: bolder;
     color: rgb(33, 37, 41);
     background-color: rgb(250, 250, 250);
-    margin-top: 30vh;
+    margin-top: 20vh;
     z-index: 9;
 
 }
@@ -248,7 +252,7 @@ nav h1 {
 
 
 .Education {
-    width: 100vw;
+  width: 100%;
     color: #fff;
 }
 
@@ -267,14 +271,12 @@ nav h1 {
 
 .card {
     scroll-snap-align: center;
+    -webkit-scroll-snap-align: center;
     scroll-snap-stop: always;
+    -webkit-scroll-snap-stop: always;
     position: relative;
     padding: 30px 5vw;
     margin: 0 5vw;
-}
-
-.card:nth-child(2) {
-    scroll-snap-align: unset;
 }
 
 .card::before {
@@ -297,10 +299,6 @@ nav h1 {
     bottom: -5px;
     border-width: 5px 0 5px 5px;
     border-radius: 50px 0 0 50px;
-}
-
-.card:nth-last-child(2) {
-    scroll-snap-align: unset;
 }
 
 .card:nth-child(2)::before {
@@ -333,9 +331,7 @@ nav h1 {
 }
 
 .Education span:last-child {
-    scroll-snap-align: end;
-    scroll-snap-stop: always;
-    padding: 0 0 20vh 0;
+    padding: 0 0 10vh 0;
     margin: 0 0 0 50vw;
     border-width: 5px 0 0 0;
 }
@@ -410,10 +406,11 @@ nav h1 {
 
 .Skills {
     position: relative;
-    width: 100vw;
+  width: 100%;
     min-height: 100vh;
 
     scroll-snap-stop: always;
+    -webkit-scroll-snap-stop: always;
     padding-top: 25vh;
 }
 
@@ -424,7 +421,7 @@ nav h1 {
 }
 
 .skilllists .container {
-    width: 100vw;
+  width: 100%;
     overflow: hidden;
 }
 
@@ -467,12 +464,15 @@ nav h1 {
 
 .descme {
     display: block;
+    padding-bottom: 5vh;
     padding: 0 20vw 0 20vw;
 }
 
 .descme div {
     scroll-snap-align: center;
+    -webkit-scroll-snap-align: center;
     scroll-snap-stop: always;
+    -webkit-scroll-snap-stop: always;
     padding-top: 50vh;
     margin: 25vh 0;
 }
@@ -487,8 +487,8 @@ nav h1 {
 
 .mask {
     position: sticky;
-    width: 100vw;
-    height: 45vh;
+  width: 100%;
+    height: 55vh;
     top: 0vh;
     margin-top: -50vh;
     display: block;
@@ -504,7 +504,7 @@ nav h1 {
     display: flex;
     align-items: center;
     height: 100vh;
-    width: 100vw;
+  width: 100%;
     color: #fff;
     background: linear-gradient(315deg, #000000 0%, #414141 74%);
 }
@@ -516,7 +516,7 @@ nav h1 {
 
 .Contact .container {
     display: block;
-    width: 100vw;
+  width: 100%;
 }
 
 .Contact h1 {
@@ -528,7 +528,9 @@ nav h1 {
 }
 
 @keyframes bounce {
-    0%,100% {
+
+    0%,
+    100% {
         transform: scale(1) translateY(0);
     }
 
@@ -540,7 +542,9 @@ nav h1 {
 
 .Contact div {
     scroll-snap-align: center;
+    -webkit-scroll-snap-align: center;
     scroll-snap-stop: always;
+    -webkit-scroll-snap-stop: always;
     text-align: center;
     width: 100%;
 }
