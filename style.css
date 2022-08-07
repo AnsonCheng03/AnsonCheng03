@@ -42,7 +42,8 @@ h1 {
     align-items: center;
     text-align: center;
     opacity: 1;
-    transition: all 0.5s ease-in-out;
+    animation: fadedisappear 1.5s forwards;
+    animation-delay: 1.5s;
 }
 
 .loader .background {
@@ -55,7 +56,38 @@ h1 {
     color: #fd746c;
     background: #fff;
     clip-path: polygon(25% 5%, 75% 5%, 100% 50%, 75% 95%, 25% 95%, 0% 50%);
-    transition: all 0.75s ease-in-out;
+    animation: rotatefadeaway 3s forwards;
+}
+
+@keyframes fadedisappear {
+    0% {
+        opacity: 100%;
+    }
+    50% {
+        opacity: 0%;
+    }
+    100% {
+        opacity: 0%;
+        display: none;
+        visibility: hidden;
+    }
+}
+
+@keyframes rotatefadeaway {
+    0% {
+        transform: rotate(0deg) scale(0);
+    }
+    50% {
+        transform: rotate(0deg) scale(1);
+    }
+    99% {
+        transform: rotate(360deg) scale(0);
+    }
+    100% {
+        transform: rotate(360deg) scale(0);
+        display: none;
+        visibility: hidden;
+    }
 }
 
 .warning {

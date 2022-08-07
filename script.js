@@ -29,17 +29,6 @@ window.scrollTo(0, 0);
 document.querySelector('.self-intro').appendChild(document.querySelector(".Contact .container div").cloneNode(true));
 
 
-setTimeout(function () {
-    document.querySelector('.loader .background').style.transform = "rotate(360deg) scale(0)";
-}, 500);
-
-setTimeout(function () {
-    document.querySelector('.loader').style.opacity = "0";
-}, 1000);
-
-setTimeout(function () {
-    document.querySelector('.loader').remove();
-}, 1500);
 if (!/Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigator.userAgent)) {
     document.querySelector('.warning .PCV').style.display = "none";
 }
