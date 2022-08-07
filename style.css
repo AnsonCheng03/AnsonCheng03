@@ -424,9 +424,17 @@ nav h1 {
 .Contact h1 {
     text-align: center;
     width: 100%;
-    padding: 10vw 0;
+    padding-bottom: 15vw;
     font-size: 2rem;
+    animation: bounce 2s ease infinite 2s;
 }
+
+@keyframes bounce {
+    0%   { transform: scale(1) translateY(0); }
+    60%  { transform: scale(1.5)   translateY(20px);}
+    100% { transform: scale(1) translateY(0);}
+}
+
 
 .Contact div {
     text-align: center;
@@ -437,4 +445,24 @@ nav h1 {
     text-align: center;
     width: 2rem;
     margin: 0 2rem;
+    transform: scale(1);
+    transition: all 0.3s ease-in-out;
+}
+
+.Contact svg:hover {
+    transform: scale(2);
+    transition: all 0.3s ease-in-out;
+}
+
+.Contact a:nth-child(1) {
+    color: hsl(34, 97%, 64%);
+}
+.Contact a:nth-child(2) {
+    color: hsl(212, 86%, 64%);
+}
+.Contact a:nth-child(3) {
+    color: hsl(180, 62%, 55%);
+}
+.Contact a:nth-child(4) {
+    color: hsl(0, 78%, 62%);
 }
