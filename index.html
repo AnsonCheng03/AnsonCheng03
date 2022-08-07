@@ -1,7 +1,7 @@
 <html>
 
 <head>
-  <meta name="viewport"
+  <meta id="viewport" name="viewport"
     content="width=device-width,height=device-height,initial-scale=1.0,minimum-scale=1.0, maximum-scale=1.0,user-scalable=0,viewport-fit=cover">
   <meta charset="UTF-8">
   <link rel="manifest" href="/app.webmanifest">
@@ -16,6 +16,10 @@
 <body>
   <div class="loader">
     <div class="background">A</div>
+  </div>
+  <div class="warning">
+    <div class="height"><h1>Warning</h1><br>Your resolution is too low.<br>Hint: Try to rotate your device or extend your window.<br>   <button class="PCV" onclick='document.getElementById("viewport").setAttribute("content", "height=1920, width=1080,initial-scale=1.0,minimum-scale=0.5, maximum-scale=0.5,user-scalable=0,viewport-fit=cover");'>Use Computer Mode</button> <button onclick="document.querySelector('.warning').style.display='none';">Ignore</button></div>
+
   </div>
   <div id="cursor"></div>
 
