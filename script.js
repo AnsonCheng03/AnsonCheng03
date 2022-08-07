@@ -1,4 +1,8 @@
 var currentlyProcessingCall = false;
+let isChromium = !!window.chrome;
+
+window.scrollTo(0, 0);
+
 const objparent = document.querySelector('.Skills');
 const obj = document.querySelector('.skilllists');
 const objtotrans = document.querySelector('.skilllists .flexbox');
@@ -13,7 +17,6 @@ function delayfunction(ms, callback) {
   }
 
 function checkheaderchange() {
-    console.log(navtxt.innerHTML);
     if (objparent.getBoundingClientRect().top <= 0) {
         if (navtxt.innerHTML !== "Skills") {
             //navtxt.style.fontSize = 0;
@@ -51,13 +54,14 @@ function scrollbox() {
     if (MoveDist < 0) MoveDist = 0;
     objtotrans.style.transform = "translateX(-" + MoveDist + "px)";
 
-    delayfunction(500, checkheaderchange);
+    if(isChromium)
+        delayfunction(750, checkheaderchange);
+    else 
+        checkheaderchange()
 }
 
 window.addEventListener('resize', scrollbox);
 window.addEventListener('scroll', scrollbox);
-
-document.querySelector('body').scrollIntoView()
 
 setTimeout(function () {
     document.querySelector('.loader .background').style.transform = "rotate(360deg) scale(0)";
