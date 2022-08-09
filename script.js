@@ -1,18 +1,10 @@
+/* Declare Variables */
 const ball = document.querySelector('.ball');
 const descmelst = document.querySelector('.descme');
 const objtotrans = document.querySelector('.skilllists .flexbox');
 const navtxt = document.querySelector('nav h1');
 
-function scrollbox() {
-    const objwidth = objtotrans.childElementCount * objtotrans.firstElementChild.offsetWidth;
-    const distancecanmove = descmelst.lastElementChild.getBoundingClientRect().top - descmelst.firstElementChild.getBoundingClientRect().top;
-    let DistanceMoved = -descmelst.getBoundingClientRect().top
-    DistanceMoved = DistanceMoved > distancecanmove ? distancecanmove : DistanceMoved < 0 ? 0 : DistanceMoved;
-    const MoveDist = DistanceMoved / distancecanmove * (objwidth - window.innerWidth);
-    objtotrans.style.transform = "translateX(-" + MoveDist + "px)";
-}
-
-
+/* Hide viewport button on desktop */
 if (!/Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigator.userAgent)) {
     document.querySelector('.warning .PCV').style.display = "none";
     window.addEventListener("mousemove", (e) => {
@@ -24,8 +16,12 @@ if (!/Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navig
     })
 }
 
+/* Make Contacts on Main Page */
 
 document.querySelector('.self-intro').appendChild(document.querySelector(".Contact .container div").cloneNode(true));
+
+
+/* Animations of Cards */
 
 const observer = new IntersectionObserver((entries) => {
     for (const entry of entries) {
@@ -38,6 +34,17 @@ const observer = new IntersectionObserver((entries) => {
 });
 for (const item of document.querySelectorAll('.card-content')) {
     observer.observe(item);
+}
+
+/* Change nav bar */
+
+function scrollbox() {
+    const objwidth = objtotrans.childElementCount * objtotrans.firstElementChild.offsetWidth;
+    const distancecanmove = descmelst.lastElementChild.getBoundingClientRect().top - descmelst.firstElementChild.getBoundingClientRect().top;
+    let DistanceMoved = -descmelst.getBoundingClientRect().top
+    DistanceMoved = DistanceMoved > distancecanmove ? distancecanmove : DistanceMoved < 0 ? 0 : DistanceMoved;
+    const MoveDist = DistanceMoved / distancecanmove * (objwidth - window.innerWidth);
+    objtotrans.style.transform = "translateX(-" + MoveDist + "px)";
 }
 
 new IntersectionObserver((entries) => {
@@ -69,52 +76,7 @@ new IntersectionObserver((entries) => {
 }).observe(document.querySelector('.Education'));
 
 
-
-
-
-/*
-var timer = null;
-
+/* Prevent Chrome jumpy behaviour on scroll snap stop */
 if (!!window.chrome) {
-
-
-    function scrolldownsimu(e) {
-
-        console.log(timer)
-
-
-        
-
-        if (timer !== null) {
-            clearTimeout(timer);
-        } else {
-            window.scrollBy({
-                top: (e.deltaY < 0 ? -100 : 100),
-                behavior: 'smooth'
-            });
-        }
-
-        timer = setTimeout(() => {
-            console.log("aa")
-        }, 150);
-        
-    }
-    window.addEventListener('keydown', (e) => scrolldownsimu(e));
-
-    
-
-
-    let supportsPassive = false;
-    try {
-        window.addEventListener("test", null, Object.defineProperty({}, 'passive', {
-            get: function () { supportsPassive = true; }
-        }));
-    } catch (e) { }
-    const wheelOpt = supportsPassive ? { passive: false } : false;
-    const wheelEvent = 'onwheel' in document.createElement('div') ? 'wheel' : 'mousewheel';
-
-    window.addEventListener('DOMMouseScroll', (e) => scrolldownsimu(e), false);
-    window.addEventListener(wheelEvent, (e) => scrolldownsimu(e), wheelOpt);
-    window.addEventListener('touchmove', (e) => scrolldownsimu(e), wheelOpt);
+    document.documentElement.style.scrollSnapType = "none"
 }
-*/
