@@ -441,12 +441,12 @@ nav h1 {
     box-shadow: 0px 30px 40px -20px hsl(229, 6%, 66%);
     border: solid;
     border-width: 3px 0 0 0;
-    transform: translateX(-50vw);
-    transition: all 1s ease-in-out;
+    transform: translateX(-30vw);
+    transition: all 0.5s ease-in-out;
 }
 
 .card:nth-child(even) .card-content {
-    transform: translateX(50vw);
+    transform: translateX(30vw);
 }
 
 .card .card-content[enterscreen] {
@@ -627,6 +627,12 @@ nav h1 {
 }
 
 .Contact h1 {
+    scroll-snap-align: start;
+    -webkit-scroll-snap-align: start;
+    scroll-snap-stop: always;
+    -webkit-scroll-snap-stop: always;
+
+
     text-align: center;
     width: 100%;
     padding-bottom: 15vw;
@@ -638,20 +644,15 @@ nav h1 {
 
     0%,
     100% {
-        transform: scale(1) translateY(0);
+        transform: scale(1);
     }
 
     60% {
-        transform: scale(1.25) translateY(20px);
+        transform: scale(1.2) translateY(5px);
     }
 }
 
-
 .Contact div {
-    scroll-snap-align: start;
-    -webkit-scroll-snap-align: start;
-    scroll-snap-stop: always;
-    -webkit-scroll-snap-stop: always;
     text-align: center;
     width: 100%;
 }
