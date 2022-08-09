@@ -56,7 +56,7 @@ h1 {
     color: #fd746c;
     background: #fff;
     clip-path: polygon(25% 5%, 75% 5%, 100% 50%, 75% 95%, 25% 95%, 0% 50%);
-    animation: rotatefadeaway 3s forwards;
+    animation: rotatefadeaway 2s forwards;
 }
 
 @keyframes fadedisappear {
@@ -75,7 +75,7 @@ h1 {
 
 @keyframes rotatefadeaway {
     0% {
-        transform: rotate(0deg) scale(0);
+        transform: rotate(0deg) scale(0.5);
     }
     50% {
         transform: rotate(0deg) scale(1);
@@ -152,6 +152,15 @@ h1 {
     right: 5vw;
     display: block;
     width: 2.5em;
+}
+
+.self-intro .socialmedias svg {
+    transition: all 0.3s ease-in-out;
+}
+
+.self-intro .socialmedias svg:hover {
+    transform: scale(1.5);
+    transition: all 0.3s ease-in-out;
 }
 
 @media (max-width: 1000px) {
@@ -235,6 +244,8 @@ h1 {
     right: calc(50% - 4.5px);
     text-align: center;
     animation: 2s blink infinite;
+    transition: all 1s ease-in-out;
+    z-index: 51;
 }
 
 .hinttext div {
@@ -243,6 +254,7 @@ h1 {
     display: inline-block;
     padding: 3px;
     transform: rotate(45deg);
+    z-index: 51;
 }
 
 
@@ -337,6 +349,7 @@ nav h1 {
     border-width: 0 0 0 5px;
     z-index: -1;
     margin: 0 5vw;
+    transition: all 0.5s ease-in-out;
 }
 
 .Education span:first-child {
@@ -351,6 +364,7 @@ nav h1 {
     position: relative;
     padding: 30px 5vw;
     margin: 0 5vw;
+    transition: all 0.5s ease-in-out;
 }
 
 .card::before {
@@ -427,7 +441,7 @@ nav h1 {
     border: solid;
     border-width: 3px 0 0 0;
     transform: translateX(-10vw);
-    transition: all 0.3s ease-in-out;
+    transition: all 0.5s ease-in-out;
 }
 
 .card:nth-child(even) .card-content {
@@ -495,7 +509,7 @@ nav h1 {
 
     scroll-snap-stop: always;
     -webkit-scroll-snap-stop: always;
-    padding: 20vh 0 80vh 0;
+    padding: 25vh 0 80vh 0;
 }
 
 .skilllists {
@@ -550,8 +564,8 @@ nav h1 {
 .skilllists span:hover p {
     background: none;
     color: #4831d4;
+    margin: 0px 19px;
     border: 1px solid #4831d4;
-    font-size: 1.5rem;
 }
 
 .descme {
@@ -670,14 +684,14 @@ nav h1 {
     color: hsl(0, 78%, 62%);
 }
 
-@media (max-height: 410px),
+@media (max-height: 510px),
 (max-width: 300px) {
     .warning {
         position: fixed;
-        top: 0;
-        left: 0;
-        bottom: 0;
-        right: 0;
+        top: -10vh;
+        left: -10vw;
+        bottom: -10vh;
+        right: -10vw;;
         z-index: 9999;
 
         background: linear-gradient(326deg, #bd4f6c 0%, #d7816a 74%);
@@ -712,3 +726,5 @@ nav h1 {
         text-transform: uppercase;
     }
 }
+
+
