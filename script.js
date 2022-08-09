@@ -4,18 +4,6 @@ const descmelst = document.querySelector('.descme');
 const objtotrans = document.querySelector('.skilllists .flexbox');
 const navtxt = document.querySelector('nav h1');
 
-/* Hide viewport button on desktop */
-if (!/Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigator.userAgent)) {
-    document.querySelector('.warning .PCV').style.display = "none";
-    window.addEventListener("mousemove", (e) => {
-        document.querySelector("#cursor").style.display = "unset";
-        document.querySelector("#cursor").style.setProperty('--cursorpx', e.clientX + 'px, ' + e.clientY + 'px');
-    });
-    document.documentElement.addEventListener('mouseleave', () => {
-        document.querySelector("#cursor").style.display = "none";
-    })
-}
-
 /* Make Contacts on Main Page */
 
 document.querySelector('.self-intro').appendChild(document.querySelector(".Contact .container div").cloneNode(true));
@@ -76,7 +64,83 @@ new IntersectionObserver((entries) => {
 }).observe(document.querySelector('.Education'));
 
 
-/* Prevent Chrome jumpy behaviour on scroll snap stop */
-if (!!window.chrome) {
-    document.documentElement.style.scrollSnapType = "none"
+/* Hide viewport button on desktop */
+if (!/Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigator.userAgent)) {
+    document.querySelector('.warning .PCV').style.display = "none";
+    window.addEventListener("mousemove", (e) => {
+        document.querySelector("#cursor").style.display = "unset";
+        document.querySelector("#cursor").style.setProperty('--cursorpx', e.clientX + 'px, ' + e.clientY + 'px');
+    });
+    document.documentElement.addEventListener('mouseleave', () => {
+        document.querySelector("#cursor").style.display = "none";
+    })
+
+
+
+    /* Prevent Chrome jumpy behaviour on scroll snap stop */
+    const fixedElements = [...document.body.getElementsByTagName("*")].filter(
+        x => getComputedStyle(x, null).getPropertyValue("scroll-snap-align") !== "none"
+    )
+
+    if (!!window.chrome) {
+
+        document.documentElement.style.scrollSnapType = "none"
+        var scrolldone = 0;
+        var currentscroll = 0;
+
+
+        function scrolltoobj() {
+            const obj = fixedElements[currentscroll];
+            window.scroll({
+                top: (getComputedStyle(obj, null).getPropertyValue("scroll-snap-align") == 'start') ?
+                    obj.getBoundingClientRect().top + window.scrollY :
+                    obj.getBoundingClientRect().top + window.scrollY - (window.innerHeight - obj.clientHeight) / 2,
+                behavior: 'smooth'
+            });
+        }
+
+        window.addEventListener('load', scrolltoobj);
+        window.addEventListener('resize', scrolltoobj);
+
+        function scrolldownsimu(e, action) {
+            e.preventDefault();
+
+            if (action == "keyboard") {
+                currentscroll += (e.code == "ArrowDown") ?
+                    (currentscroll < fixedElements.length - 1 ? 1 : 0) :
+                    (currentscroll > 0 ? -1 : 0);
+                scrolltoobj()
+            } else {
+                if (scrolldone == 0) {
+                    currentscroll += (e.deltaY > 0) ?
+                        (currentscroll < fixedElements.length - 1 ? 1 : 0) :
+                        (currentscroll > 0 ? -1 : 0);
+                    scrolltoobj()
+                    scrolldone = false;
+                }
+                scrolldone += 1;
+            }
+            setTimeout(() => { scrolldone -= 1;console.log(scrolldone) }, 75);
+        }
+
+
+        /*Disable Scrolling*/
+        let supportsPassive = false;
+        try {
+            window.addEventListener("test", null, Object.defineProperty({}, 'passive', {
+                get: function () { supportsPassive = true; }
+            }));
+        } catch (e) { }
+        const wheelOpt = supportsPassive ? { passive: false } : false;
+
+        window.addEventListener('DOMMouseScroll', (e) => scrolldownsimu(e, 'scroll'), false);
+        window.addEventListener('onwheel' in document.createElement('div') ? 'wheel' : 'mousewheel', (e) => scrolldownsimu(e, 'scroll'), wheelOpt);
+        window.addEventListener('touchmove', (e) => scrolldownsimu(e, 'scroll'), wheelOpt);
+        window.addEventListener('keydown', (e) => {
+            if ({ 'ArrowDown': 1, 'ArrowUp': 1 }[e.code]) {
+                scrolldownsimu(e, 'keyboard');
+                return false;
+            }
+        }, false);
+    }
 }
