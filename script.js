@@ -43,7 +43,7 @@ new IntersectionObserver((entries) => {
             navtxt.style.fontSize = 0;
             navtxt.style.opacity = 0.2;
             setTimeout(function () {
-                navtxt.innerHTML = "Education & Working Exp.";
+                navtxt.innerHTML = "Education & Experiences";
                 navtxt.style.borderColor = "#47bcd4";
                 navtxt.style.opacity = 1;
                 navtxt.style.fontSize = "1.5rem";
@@ -74,43 +74,56 @@ if (!/Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navig
     document.documentElement.addEventListener('mouseleave', () => {
         document.querySelector("#cursor").style.display = "none";
     })
+}
 
 
+
+
+/*snap stop css fix*/
+const fixedElements = [...document.body.getElementsByTagName("*")].filter(x => getComputedStyle(x, null).getPropertyValue("scroll-snap-align") !== "none")
+var scrolldone = 0;
+var currentscroll = 0;
+
+function scrolltoobj() {
+    console.log("aaa")
+    const obj = fixedElements[currentscroll];
+    window.scroll({
+        top: (getComputedStyle(obj, null).getPropertyValue("scroll-snap-align") == 'start') ?
+            obj.getBoundingClientRect().top + window.scrollY :
+            obj.getBoundingClientRect().top + window.scrollY - (window.innerHeight - obj.clientHeight) / 2,
+        behavior: 'smooth'
+    });
+}
+
+function scrolldownsimu(e, action) {
 
     /* Prevent Chrome jumpy behaviour on scroll snap stop */
-    const fixedElements = [...document.body.getElementsByTagName("*")].filter(
-        x => getComputedStyle(x, null).getPropertyValue("scroll-snap-align") !== "none"
-    )
-
     if (!!window.chrome) {
-
-        document.documentElement.style.scrollSnapType = "none"
-        var scrolldone = 0;
-        var currentscroll = 0;
-
-
-        function scrolltoobj() {
-            const obj = fixedElements[currentscroll];
-            window.scroll({
-                top: (getComputedStyle(obj, null).getPropertyValue("scroll-snap-align") == 'start') ?
-                    obj.getBoundingClientRect().top + window.scrollY :
-                    obj.getBoundingClientRect().top + window.scrollY - (window.innerHeight - obj.clientHeight) / 2,
-                behavior: 'smooth'
-            });
-        }
-
-        window.addEventListener('load', scrolltoobj);
-        window.addEventListener('resize', scrolltoobj);
-
-        function scrolldownsimu(e, action) {
-            e.preventDefault();
-
-            if (action == "keyboard") {
-                currentscroll += (e.code == "ArrowDown") ?
+        e.preventDefault();
+        if (action == "keyboard") {
+            currentscroll += (e.code == "ArrowDown") ?
+                (currentscroll < fixedElements.length - 1 ? 1 : 0) :
+                (currentscroll > 0 ? -1 : 0);
+            scrolltoobj()
+        } else {
+            if (scrolldone == 0) {
+                currentscroll += (e.deltaY > 0) ?
                     (currentscroll < fixedElements.length - 1 ? 1 : 0) :
                     (currentscroll > 0 ? -1 : 0);
                 scrolltoobj()
-            } else {
+                scrolldone = false;
+            }
+            scrolldone += 1;
+            setTimeout(() => { scrolldone -= 1; }, 75);
+        }
+    }
+
+    /* Fix Desktop Safari scroll snap stop not working on mouse*/
+    if (!/iPhone|iPad|iPod/i.test(navigator.userAgent)){
+        if (/^((?!chrome|android).)*safari/i.test(navigator.userAgent)) {
+            const isTouchPad = e.wheelDeltaY ? e.wheelDeltaY === -3 * e.deltaY : e.deltaMode === 0
+            if (!isTouchPad) {
+                e.preventDefault();
                 if (scrolldone == 0) {
                     currentscroll += (e.deltaY > 0) ?
                         (currentscroll < fixedElements.length - 1 ? 1 : 0) :
@@ -119,28 +132,23 @@ if (!/Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navig
                     scrolldone = false;
                 }
                 scrolldone += 1;
+                setTimeout(() => { scrolldone -= 1; }, 75);
             }
-            setTimeout(() => { scrolldone -= 1;console.log(scrolldone) }, 75);
         }
-
-
-        /*Disable Scrolling*/
-        let supportsPassive = false;
-        try {
-            window.addEventListener("test", null, Object.defineProperty({}, 'passive', {
-                get: function () { supportsPassive = true; }
-            }));
-        } catch (e) { }
-        const wheelOpt = supportsPassive ? { passive: false } : false;
-
-        window.addEventListener('DOMMouseScroll', (e) => scrolldownsimu(e, 'scroll'), false);
-        window.addEventListener('onwheel' in document.createElement('div') ? 'wheel' : 'mousewheel', (e) => scrolldownsimu(e, 'scroll'), wheelOpt);
-        window.addEventListener('touchmove', (e) => scrolldownsimu(e, 'scroll'), wheelOpt);
-        window.addEventListener('keydown', (e) => {
-            if ({ 'ArrowDown': 1, 'ArrowUp': 1 }[e.code]) {
-                scrolldownsimu(e, 'keyboard');
-                return false;
-            }
-        }, false);
     }
+}
+
+/*Disable Scrolling*/
+let supportsPassive = false;
+try { window.addEventListener("test", null, Object.defineProperty({}, 'passive', { get: function () { supportsPassive = true; } })); } catch (e) { }
+const wheelOpt = supportsPassive ? { passive: false } : false;
+window.addEventListener('DOMMouseScroll', (e) => scrolldownsimu(e, 'scroll'), false);
+window.addEventListener('onwheel' in document.createElement('div') ? 'wheel' : 'mousewheel', (e) => scrolldownsimu(e, 'scroll'), wheelOpt);
+window.addEventListener('touchmove', (e) => scrolldownsimu(e, 'scroll'), wheelOpt);
+
+if (!!window.chrome) {
+    document.documentElement.style.scrollSnapType = "none";
+    window.addEventListener('load', scrolltoobj);
+    window.addEventListener('resize', scrolltoobj);
+    window.addEventListener('keydown', (e) => { if ({ 'ArrowDown': 1, 'ArrowUp': 1 }[e.code]) { scrolldownsimu(e, 'keyboard'); } }, false);
 }
