@@ -85,7 +85,6 @@ var scrolldone = 0;
 var currentscroll = 0;
 
 function scrolltoobj() {
-    console.log("aaa")
     const obj = fixedElements[currentscroll];
     window.scroll({
         top: (getComputedStyle(obj, null).getPropertyValue("scroll-snap-align") == 'start') ?
@@ -96,30 +95,30 @@ function scrolltoobj() {
 }
 
 function scrolldownsimu(e, action) {
-
     /* Prevent Chrome jumpy behaviour on scroll snap stop */
-    if (!!window.chrome) {
-        e.preventDefault();
-        if (action == "keyboard") {
-            currentscroll += (e.code == "ArrowDown") ?
-                (currentscroll < fixedElements.length - 1 ? 1 : 0) :
-                (currentscroll > 0 ? -1 : 0);
-            scrolltoobj()
-        } else {
-            if (scrolldone == 0) {
-                currentscroll += (e.deltaY > 0) ?
+    if (!/Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigator.userAgent))
+        if (!!window.chrome) {
+            e.preventDefault();
+            if (action == "keyboard") {
+                currentscroll += (e.code == "ArrowDown") ?
                     (currentscroll < fixedElements.length - 1 ? 1 : 0) :
                     (currentscroll > 0 ? -1 : 0);
                 scrolltoobj()
-                scrolldone = false;
+            } else {
+                if (scrolldone == 0) {
+                    currentscroll += (e.deltaY > 0) ?
+                        (currentscroll < fixedElements.length - 1 ? 1 : 0) :
+                        (currentscroll > 0 ? -1 : 0);
+                    scrolltoobj()
+                    scrolldone = false;
+                }
+                scrolldone += 1;
+                setTimeout(() => { scrolldone -= 1; }, 75);
             }
-            scrolldone += 1;
-            setTimeout(() => { scrolldone -= 1; }, 75);
         }
-    }
 
     /* Fix Desktop Safari scroll snap stop not working on mouse*/
-    if (!/iPhone|iPad|iPod/i.test(navigator.userAgent)){
+    if (!/iPhone|iPad|iPod/i.test(navigator.userAgent))
         if (/^((?!chrome|android).)*safari/i.test(navigator.userAgent)) {
             const isTouchPad = e.wheelDeltaY ? e.wheelDeltaY === -3 * e.deltaY : e.deltaMode === 0
             if (!isTouchPad) {
@@ -135,7 +134,7 @@ function scrolldownsimu(e, action) {
                 setTimeout(() => { scrolldone -= 1; }, 75);
             }
         }
-    }
+
 }
 
 /*Disable Scrolling*/
@@ -146,9 +145,12 @@ window.addEventListener('DOMMouseScroll', (e) => scrolldownsimu(e, 'scroll'), fa
 window.addEventListener('onwheel' in document.createElement('div') ? 'wheel' : 'mousewheel', (e) => scrolldownsimu(e, 'scroll'), wheelOpt);
 window.addEventListener('touchmove', (e) => scrolldownsimu(e, 'scroll'), wheelOpt);
 
-if (!!window.chrome) {
-    document.documentElement.style.scrollSnapType = "none";
-    window.addEventListener('load', scrolltoobj);
-    window.addEventListener('resize', scrolltoobj);
-    window.addEventListener('keydown', (e) => { if ({ 'ArrowDown': 1, 'ArrowUp': 1 }[e.code]) { scrolldownsimu(e, 'keyboard'); } }, false);
-}
+if (!!window.chrome)
+    if (!/Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigator.userAgent)) {
+        document.documentElement.style.scrollSnapType = "none";
+        window.addEventListener('load', scrolltoobj);
+        window.addEventListener('resize', scrolltoobj);
+        window.addEventListener('keydown', (e) => { if ({ 'ArrowDown': 1, 'ArrowUp': 1 }[e.code]) { scrolldownsimu(e, 'keyboard'); } }, false);
+    } else {
+        document.documentElement.style.scrollSnapType = "none";
+    }
