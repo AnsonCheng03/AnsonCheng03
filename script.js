@@ -5,7 +5,6 @@ const objtotrans = document.querySelector('.skilllists .flexbox');
 const navtxt = document.querySelector('nav h1');
 
 /* Make Contacts on Main Page */
-
 document.querySelector('.self-intro').appendChild(document.querySelector(".Contact .container div").cloneNode(true));
 
 
@@ -154,3 +153,15 @@ if (!!window.chrome)
     } else {
         document.documentElement.style.scrollSnapType = "none";
     }
+
+
+/*scroll to top on load*/
+window.addEventListener('load', ()=> {
+    if (history.scrollRestoration) {
+        history.scrollRestoration = 'manual';
+    } else {
+        window.onbeforeunload = function () {
+            window.scrollTo(0, 0);
+        }
+    }
+})

@@ -134,6 +134,75 @@ h1 {
     transform: translate(var(--cursorpx));
 }
 
+.linktree {
+    font-family: Arial, Helvetica, sans-serif;
+    background: rgba(255, 255, 255, 0.98);
+    position: fixed;
+    bottom: 2vh;
+    left: 5vw;
+    height: 60vh;
+    width: 90vw;
+    border-radius: 5px;
+    z-index: 99;
+    box-shadow: 0 4px 4px rgba(0, 0, 0, 0.4);
+    transition: all 0.5s ease-in-out;
+}
+
+.linktree button {
+    position: absolute;
+    top: 20px;
+    right: 20px;
+    width: 20px;
+    height: 20px;
+    padding: 0;
+    border: none;
+    background: none;
+    outline: none;
+    font-size: 20px;
+}
+
+.linktree svg {
+    width: 10vw;
+    padding: 2vw;
+    position: absolute;
+    top: -6vw;
+    left: calc(50% - 6vw);
+    background: linear-gradient(45deg, #f09433 0%,#e6683c 25%,#dc2743 50%,#cc2366 75%,#bc1888 100%);
+    border-radius: 10px;
+}
+
+.links {
+    margin-top: 90px;
+    height: calc(100% - 100px);
+    overflow-y: scroll;
+}
+
+.linktree p {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    text-align: center;
+    padding: 20px 0;
+    display: block;
+    font-size: 1.5rem;
+}
+
+.linktree a {
+    display: block;
+    font-size: 1rem;
+    padding: 20px 0;
+    width: 80%;
+    text-align: center;
+    text-decoration: none;
+    color: #000;
+    margin: 10px auto;
+    border-radius: 3px;
+    white-space: nowrap;
+    border: solid rgba(13,202,240,1);
+    border-width: .5px .5px .5px 3px;
+}
+
 
 /* First Section */
 
