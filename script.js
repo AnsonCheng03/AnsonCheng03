@@ -155,8 +155,9 @@ if (!!window.chrome)
     }
 
 
-/*scroll to top on load*/
-window.addEventListener('load', ()=> {
+
+window.addEventListener('load', () => {
+    /*scroll to top on load*/
     if (history.scrollRestoration) {
         history.scrollRestoration = 'manual';
     } else {
@@ -164,4 +165,12 @@ window.addEventListener('load', ()=> {
             window.scrollTo(0, 0);
         }
     }
+
+    /* ig linktree */
+    if (navigator.userAgent.indexOf("Instagram") != -1)
+        document.querySelector('.linktree').style.display = unset;
+
 })
+
+
+
