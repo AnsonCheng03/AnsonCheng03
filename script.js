@@ -158,19 +158,15 @@ if (!!window.chrome)
 
 window.addEventListener('load', () => {
     /*scroll to top on load*/
-    if (history.scrollRestoration) {
+    if (history.scrollRestoration)
         history.scrollRestoration = 'manual';
-    } else {
-        window.onbeforeunload = function () {
+    else
+        window.onbeforeunload = () => {
             window.scrollTo(0, 0);
         }
-    }
+
 
     /* ig linktree */
-    if (navigator.userAgent.indexOf("Instagram") != -1)
-        document.querySelector('.linktree').style.display = unset;
-
+    if (navigator.userAgent.toLowerCase().indexOf("instagram") != -1)
+        document.querySelector('.linktree').style.display = 'unset';
 })
-
-
-

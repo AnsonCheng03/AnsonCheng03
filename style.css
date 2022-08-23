@@ -166,16 +166,10 @@ h1 {
     width: 10vw;
     padding: 2vw;
     position: absolute;
-    top: -6vw;
-    left: calc(50% - 6vw);
-    background: linear-gradient(45deg, #f09433 0%,#e6683c 25%,#dc2743 50%,#cc2366 75%,#bc1888 100%);
+    top: -7vw;
+    left: calc(50% - 7vw);
+    background: linear-gradient(45deg, #f09433 0%, #e6683c 25%, #dc2743 50%, #cc2366 75%, #bc1888 100%);
     border-radius: 10px;
-}
-
-.links {
-    margin-top: 90px;
-    height: calc(100% - 100px);
-    overflow-y: scroll;
 }
 
 .linktree p {
@@ -189,7 +183,13 @@ h1 {
     font-size: 1.5rem;
 }
 
-.linktree a {
+.linktree .links {
+    margin-top: 100px;
+    height: calc(100% - 100px);
+    overflow-y: scroll;
+}
+
+.linktree .links a {
     display: block;
     font-size: 1rem;
     padding: 20px 0;
@@ -200,7 +200,7 @@ h1 {
     margin: 10px auto;
     border-radius: 3px;
     white-space: nowrap;
-    border: solid rgba(13,202,240,1);
+    border: solid rgba(13, 202, 240, 1);
     border-width: .5px .5px .5px 3px;
 }
 
