@@ -3,6 +3,7 @@ body {
     margin: 0;
     padding: 0;
     min-height: 100vh;
+    min-height: 100dvh;
     width: 100%;
     scroll-snap-type: y mandatory;
     scroll-behavior: smooth;
@@ -140,8 +141,10 @@ h1 {
     display: none;
     position: fixed;
     bottom: 2vh;
+    bottom: 2dvh;
     left: 5vw;
     height: 60vh;
+    height: 60dvh;
     width: 90vw;
     border-radius: 5px;
     z-index: 99;
@@ -210,6 +213,7 @@ h1 {
 .self-intro {
     position: relative;
     height: 110vh;
+    height: 110dvh;
     width: 100%;
     color: #fff;
     background: linear-gradient(to right, #0f2027, #203a43, #2c5364);
@@ -226,6 +230,7 @@ h1 {
 .self-intro .socialmedias {
     position: absolute;
     top: 5vh;
+    top: 5dvh;
     right: 5vw;
     display: block;
     width: 2.5em;
@@ -245,6 +250,7 @@ h1 {
     .self-intro .socialmedias {
         right: unset;
         top: 10vh;
+        top: 10dvh;
         display: block;
         width: 100vw;
         text-align: center;
@@ -262,6 +268,7 @@ h1 {
 
 .greetings {
     padding-top: 40vh;
+    padding-top: 40dvh;
     margin-left: 20%;
 }
 
@@ -318,6 +325,7 @@ h1 {
 .hinttext {
     position: absolute;
     bottom: 20vh;
+    bottom: 20dvh;
     right: calc(50% - 4.5px);
     text-align: center;
     animation: 2s blink infinite;
@@ -395,6 +403,7 @@ nav {
     color: rgb(33, 37, 41);
     background-color: rgb(250, 250, 250);
     margin-top: 25vh;
+    margin-top: 25dvh;
     z-index: 9;
 
 }
@@ -422,6 +431,7 @@ nav h1 {
 .Education span {
     display: block;
     padding: 100vh 30px 5vh 30px;
+    padding: 100dvh 30px 5dvh 30px;
     border: solid #47bcd4 5px;
     border-width: 0 0 0 5px;
     z-index: -1;
@@ -431,6 +441,7 @@ nav h1 {
 
 .Education span:first-child {
     margin-top: -100vh;
+    margin-top: -100dvh;
 }
 
 .card {
@@ -498,6 +509,7 @@ nav h1 {
 
 .Education span:last-child {
     padding: 0 0 10vh 0;
+    padding: 0 0 10dvh 0;
     margin: 0 0 0 50vw;
     border-width: 5px 0 0 0;
 }
@@ -610,15 +622,18 @@ nav h1 {
     position: relative;
     width: 100%;
     min-height: 100vh;
+    min-height: 100dvh;
 
     scroll-snap-stop: always;
     -webkit-scroll-snap-stop: always;
     padding: 25vh 0 80vh 0;
+    padding: 25dvh 0 80dvh 0;
 }
 
 .skilllists {
     position: sticky;
     top: 20vh;
+    top: 20dvh;
     z-index: 7;
 }
 
@@ -675,6 +690,7 @@ nav h1 {
 .descme {
     display: block;
     padding: 0 20vw 5vh 20vw;
+    padding: 0 20vw 5dvh 20vw;
 }
 
 .descme div {
@@ -683,7 +699,9 @@ nav h1 {
     scroll-snap-stop: always;
     -webkit-scroll-snap-stop: always;
     padding-top: 65vh;
+    padding-top: 65dvh;
     margin-bottom: 25vh;
+    margin-bottom: 25dvh;
 }
 
 .descme div h3 {
@@ -698,8 +716,10 @@ nav h1 {
     position: sticky;
     width: 100%;
     height: 60vh;
-    top: 0vh;
+    height: 60dvh;
+    top: 0;
     margin-top: -40vh;
+    margin-top: -40dvh;
     display: block;
     background: linear-gradient(to top, rgba(255, 255, 255, 0.9), rgba(250, 250, 250, 2));
     filter: blur(10px);
@@ -713,6 +733,7 @@ nav h1 {
     display: flex;
     align-items: center;
     height: 100vh;
+    height: 100dvh;
     height: -webkit-fill-available;
     width: 100%;
     color: #fff;
@@ -794,10 +815,11 @@ nav h1 {
     .warning {
         position: fixed;
         top: -10vh;
+        top: -10dvh;
         left: -10vw;
         bottom: -10vh;
+        bottom: -10dvh;
         right: -10vw;
-        ;
         z-index: 9999;
 
         background: linear-gradient(326deg, #bd4f6c 0%, #d7816a 74%);
@@ -815,6 +837,7 @@ nav h1 {
         width: 80%;
         margin: 0 auto;
         padding: 5vh 0;
+        padding: 5dvh 0;
         text-align: center;
         color: #bd4f6c;
         background: #fff;
