@@ -1,0 +1,54 @@
+.Project {
+  /* margin-top: -100vh; */
+  height: 100vh;
+  color: rgb(251, 251, 251);
+}
+
+.Project .sectionTitle {
+  font-size: 2rem;
+  margin: 0;
+  text-align: center;
+  padding: 1rem;
+  margin-bottom: 5vh;
+}
+
+.projectList {
+  display: flex;
+  gap: 1rem;
+  justify-content: center;
+  align-items: center;
+  flex-wrap: wrap;
+}
+
+.projectCard {
+  height: 45vh;
+  width: 80vw;
+  padding: 10vw;
+  background: #fff;
+  color: rgb(51, 51, 51);
+  padding: 1rem;
+  border-radius: 10px;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+  text-align: center;
+  transition: all 0.5s ease-in-out;
+  display: grid;
+  grid-template-rows: calc(45vh - 75px) 25px 50px;
+  justify-content: center;
+  align-items: center;
+  gap: 1rem;
+}
+
+.projectCard img {
+  width: 100%;
+  height: calc(45vh - 75px);
+  object-fit: cover;
+}
+
+.projectCard h2 {
+  font-size: 1.5rem;
+  margin: 0;
+}
+
+.projectCard p {
+  margin: 0;
+}
