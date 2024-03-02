@@ -5,6 +5,6 @@ gsap.from(".Project", {
     trigger: ".Intro",
     scrub: true,
     start: "top top",
-    end: "25%",
+    end: "50%",
   },
 });
