@@ -15,18 +15,18 @@ gsap.to(".Project .sectionTitle", {
   scrollTrigger: {
     trigger: ".Project",
     scrub: true,
-    start: "top",
+    start: "top -100%",
     end: "25%  -50%",
   },
 });
 
-gsap.from(".Project .sectionTitle .imageContainer", {
-  height: "150vh",
+gsap.to(".Project .sectionTitle .imageContainer .case", {
+  height: "calc(80vw / 16 * 9)",
   ease: "power2.inOut",
   scrollTrigger: {
     trigger: ".Project",
     scrub: true,
-    start: "top  -50%",
+    start: `top top`,
     end: "25%",
   },
 });
@@ -38,7 +38,7 @@ gsap.to(".Project .sectionTitle h1", {
   scrollTrigger: {
     trigger: ".Project",
     scrub: true,
-    start: "top -50%",
+    start: `top -100%`,
     end: "25%",
   },
 });

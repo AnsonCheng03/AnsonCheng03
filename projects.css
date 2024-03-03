@@ -14,6 +14,9 @@
   transform: translateY(-50%);
   text-align: center;
   padding: 1rem;
+  width: calc(100vw - 2rem);
+  overflow-x: hidden;
+  overflow: visible;
   display: flex;
   justify-content: center;
   align-items: center;
@@ -21,6 +24,7 @@
 
 .Project .sectionTitle h1 {
   position: absolute;
+  color: rgb(251, 251, 251);
   top: 50%;
   transform: translateY(-50%);
   font-size: 5rem;
@@ -28,21 +32,60 @@
 }
 
 .Project .sectionTitle .imageContainer {
-  height: calc(100vw / 16 * 9 / 2.5);
+  height: 100vh;
+  width: fit-content;
   border-radius: 5px;
-
-  aspect-ratio: 16 / 9;
   display: flex;
   justify-content: center;
   align-items: center;
   gap: 1rem;
 }
 
+.Project .sectionTitle .case {
+  height: 100vh;
+  aspect-ratio: 16 / 9;
+}
+
+.Project .sectionTitle .imageContainer .imageWrapper {
+  border-radius: 5px;
+  box-shadow: 0 0 10px 5px rgba(0, 0, 0, 0.1);
+  overflow: hidden;
+}
+
 .Project .sectionTitle .imageContainer img {
   width: 100%;
   height: 100%;
   object-fit: cover;
+}
+
+.Project .projectDescription {
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+  padding: 1rem;
   border-radius: 5px;
-  border: 3px solid rgb(51, 51, 51);
-  background-color: #000;
+  box-shadow: 0 0 10px 5px rgba(0, 0, 0, 0.1);
+  background-color: rgb(251, 251, 251);
+  position: relative;
+  z-index: 1;
+}
+
+.Project .projectDescription h1 {
+  font-size: 2rem;
+  margin: 0;
+}
+
+.Project .projectDescription h2 {
+  font-size: 1rem;
+  margin: 0;
+}
+
+.Project .projectDescription .projectButton {
+  padding: 0.5rem 1rem;
+  border: none;
+  border-radius: 5px;
+  background-color: rgb(51, 51, 51);
+  color: rgb(251, 251, 251);
+  cursor: pointer;
+  transition: all 0.5s ease-in-out;
 }
