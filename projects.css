@@ -24,16 +24,22 @@
 
 .Project .sectionTitle h1 {
   position: absolute;
-  color: rgb(251, 251, 251);
+  width: 100%;
+  height: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  color: rgb(51, 51, 51);
+  background-color: rgb(251, 251, 251);
   top: 50%;
   transform: translateY(-50%);
   font-size: 5rem;
   margin: 0;
+  border-radius: 50px;
 }
 
 .Project .sectionTitle .imageContainer {
-  height: 100vh;
-  width: fit-content;
+  position: relative;
   border-radius: 5px;
   display: flex;
   justify-content: center;
@@ -42,13 +48,24 @@
 }
 
 .Project .sectionTitle .case {
-  height: 100vh;
-  aspect-ratio: 16 / 9;
+  position: relative;
+  width: 40vw;
+  aspect-ratio: 1279 / 2716;
+}
+
+.Project .sectionTitle .case .iPhone {
+  width: 100%;
+  height: 100%;
+  position: absolute;
+  top: 0;
+  left: 0;
+  z-index: 1;
+  scale: 1.1;
+  object-fit: scale-down;
 }
 
 .Project .sectionTitle .imageContainer .imageWrapper {
   border-radius: 5px;
-  box-shadow: 0 0 10px 5px rgba(0, 0, 0, 0.1);
   overflow: hidden;
 }
 
@@ -56,36 +73,29 @@
   width: 100%;
   height: 100%;
   object-fit: cover;
+  border-radius: 50px;
 }
 
 .Project .projectDescription {
+  margin-top: 80vh;
+}
+
+.Project .projectContent {
   display: flex;
   flex-direction: column;
-  gap: 1rem;
-  padding: 1rem;
-  border-radius: 5px;
-  box-shadow: 0 0 10px 5px rgba(0, 0, 0, 0.1);
+  gap: 2rem;
+  padding: 50vh 5vw 50vh 55vw;
+}
+
+.Project .projectContent:nth-child(even) {
   background-color: rgb(251, 251, 251);
-  position: relative;
-  z-index: 1;
 }
 
-.Project .projectDescription h1 {
-  font-size: 2rem;
-  margin: 0;
-}
-
-.Project .projectDescription h2 {
-  font-size: 1rem;
-  margin: 0;
-}
-
-.Project .projectDescription .projectButton {
-  padding: 0.5rem 1rem;
-  border: none;
-  border-radius: 5px;
-  background-color: rgb(51, 51, 51);
-  color: rgb(251, 251, 251);
+.Project .projectButton {
+  border: rgb(51, 51, 51) 2px solid;
+  background: transparent;
+  border-radius: 50px;
+  padding: 1rem 2rem;
+  width: fit-content;
   cursor: pointer;
-  transition: all 0.5s ease-in-out;
 }
