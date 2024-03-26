@@ -75,26 +75,19 @@ gsap.from(".Project .projectDescription", {
   },
 });
 
-// gsap.to(".Project .sectionTitle", {
-//   top: "100vh",
-//   ease: "power2.inOut",
-//   scrollTrigger: {
-//     trigger: ".rotatePhone", // Set the trigger to ".Project" element
-//     scrub: true,
-//     start: "bottom bottom", // Animation starts when the bottom of ".Project .case" aligns with the bottom of ".Project"
-//     end: "+=20% +=25%", // Animation ends when the top of ".Project .case" aligns with the top of ".Project"
-//     markers: true,
-//   },
-// });
-
-gsap.to(".Project .case", {
+gsap.to(".Project .sectionTitle", {
   rotate: 90,
+  // padding: "25vh 45vw 0 25vw",
+  padding: "0 25vw",
+
+  right: 0,
   ease: "power2.inOut",
   scrollTrigger: {
     trigger: ".rotatePhone",
     scrub: true,
-    start: "top center",
-    end: "bottom bottom",
+    start: "top bottom",
+    end: "bottom top",
     markers: true,
+    pin: true,
   },
 });
