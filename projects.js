@@ -20,7 +20,7 @@ gsap.to(".Project .sectionTitle", {
 });
 
 gsap.from(".Project .sectionTitle .imageContainer .case", {
-  width: "110vw",
+  width: "115vw",
   ease: "power2.inOut",
   scrollTrigger: {
     trigger: ".Project",
@@ -31,7 +31,8 @@ gsap.from(".Project .sectionTitle .imageContainer .case", {
 });
 
 gsap.to(".Project .sectionTitle h1", {
-  fontSize: "2.5rem",
+  fontSize: "1.5rem",
+  padding: "1rem 0",
   ease: "power2.inOut",
   scrollTrigger: {
     trigger: ".Project",
@@ -70,6 +71,6 @@ gsap.from(".Project .projectDescription", {
     trigger: ".Project",
     scrub: true,
     start: `22%`,
-    end: "27.5%",
+    end: "23%",
   },
 });

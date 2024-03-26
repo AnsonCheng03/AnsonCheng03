@@ -29,11 +29,11 @@
   display: flex;
   justify-content: center;
   align-items: center;
-  background-color: rgb(51, 51, 51);
-  color: rgb(251, 251, 251);
+  color: rgb(51, 51, 51);
   top: 50%;
   transform: translateY(-50%);
-  border-radius: 50px;
+  z-index: 2;
+  overflow: hidden;
 }
 
 .Project .sectionTitle .titleContainer::after {
@@ -43,7 +43,7 @@
   left: 0;
   width: 100%;
   height: 100%;
-  background-color: rgba(51, 51, 51, 0.3);
+  background-color: rgba(251, 251, 251, 0.9);
   border-radius: 50px;
   z-index: -1;
 }
@@ -55,13 +55,13 @@
   width: 100%;
   height: 100%;
   object-fit: cover;
-  border-radius: 50px;
   z-index: -1;
 }
 
 .Project .sectionTitle h1 {
   font-size: 5rem;
   margin: 0;
+  text-transform: uppercase;
 }
 
 .Project .sectionTitle .imageContainer {
@@ -75,7 +75,7 @@
 
 .Project .sectionTitle .case {
   position: relative;
-  width: 40vw;
+  width: min(40vw, calc(80vh / 2));
   aspect-ratio: 1279 / 2716;
 }
 
@@ -83,27 +83,34 @@
   width: 100%;
   height: 100%;
   position: absolute;
+  z-index: 3;
   top: 0;
   left: 0;
-  z-index: 1;
   scale: 1.1;
-  object-fit: scale-down;
+  object-fit: contain;
 }
 
 .Project .sectionTitle .imageContainer .imageWrapper {
-  border-radius: 5px;
   overflow: hidden;
+  border-radius: 25px;
+  position: relative;
 }
 
-.Project .sectionTitle .imageContainer img {
+.Project .sectionTitle .imageContainer .imageWrapper img {
+  position: absolute;
+  left: 0;
+  top: 0;
   width: 100%;
   height: 100%;
   object-fit: cover;
-  border-radius: 50px;
+}
+
+.Project .sectionTitle .imageContainer .imageWrapper img:first-child {
+  position: relative;
 }
 
 .Project .projectDescription {
-  margin-top: 80vh;
+  margin-top: max(80vh, 1300px);
 }
 
 .Project .projectContent {
@@ -115,6 +122,10 @@
 
 .Project .projectContent:nth-child(even) {
   background-color: rgb(251, 251, 251);
+}
+
+.Project .projectContent:last-child {
+  padding-bottom: 100vh;
 }
 
 .Project .projectButton {
