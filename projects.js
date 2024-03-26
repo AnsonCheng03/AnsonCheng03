@@ -79,7 +79,7 @@ gsap.to(".Project .sectionTitle", {
   rotate: 90,
   // padding: "25vh 45vw 0 25vw",
   padding: "0 25vw",
-
+  scale: 1.5,
   right: 0,
   ease: "power2.inOut",
   scrollTrigger: {
