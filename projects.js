@@ -30,7 +30,7 @@ gsap.from(".Project .sectionTitle  .case", {
   },
 });
 
-gsap.to(".Project .sectionTitle h1", {
+gsap.to(".Project .sectionTitle .titleContainer h1", {
   fontSize: "1.5rem",
   padding: "1rem 0",
   ease: "power2.inOut",
@@ -53,7 +53,7 @@ gsap.to(".Project .sectionTitle .titleContainer", {
   },
 });
 
-gsap.to(".Project .sectionTitle h1", {
+gsap.to(".Project .sectionTitle  .titleContainer h1", {
   y: 50,
   ease: "power2.inOut",
   scrollTrigger: {
@@ -87,7 +87,18 @@ gsap.to(".Project .sectionTitle", {
     scrub: true,
     start: "top bottom",
     end: "bottom top",
-    markers: true,
     pin: true,
+  },
+});
+
+gsap.to(".Project .sectionTitle .endPopUpContainer", {
+  autoAlpha: 1,
+  ease: "power2.inOut",
+  scrollTrigger: {
+    trigger: ".rotatePhone",
+    scrub: true,
+    start: "top bottom",
+    end: "bottom-=10% top",
+    markers: true,
   },
 });
