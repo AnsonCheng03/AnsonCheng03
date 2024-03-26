@@ -25,22 +25,43 @@ gsap.from(".Project .sectionTitle .imageContainer .case", {
   scrollTrigger: {
     trigger: ".Project",
     scrub: true,
-    start: `15% 20%`,
+    start: `5% 20%`,
     end: "25%",
   },
 });
 
-// gsap.to(".Project .sectionTitle h1", {
-//   autoAlpha: 0,
-//   y: -100,
-//   ease: "power2.inOut",
-//   scrollTrigger: {
-//     trigger: ".Project",
-//     scrub: true,
-//     start: `10% 15%`,
-//     end: "20%",
-//   },
-// });
+gsap.to(".Project .sectionTitle h1", {
+  fontSize: "2.5rem",
+  ease: "power2.inOut",
+  scrollTrigger: {
+    trigger: ".Project",
+    scrub: true,
+    start: `5% 20%`,
+    end: "25%",
+  },
+});
+
+gsap.to(".Project .sectionTitle .titleContainer", {
+  autoAlpha: 0,
+  ease: "power2.inOut",
+  scrollTrigger: {
+    trigger: ".Project",
+    scrub: true,
+    start: `22%`,
+    end: "25%",
+  },
+});
+
+gsap.to(".Project .sectionTitle h1", {
+  y: 50,
+  ease: "power2.inOut",
+  scrollTrigger: {
+    trigger: ".Project",
+    scrub: true,
+    start: `22%`,
+    end: "25%",
+  },
+});
 
 gsap.from(".Project .projectDescription", {
   autoAlpha: 0,

@@ -22,20 +22,46 @@
   align-items: center;
 }
 
-.Project .sectionTitle h1 {
+.Project .sectionTitle .titleContainer {
   position: absolute;
   width: 100%;
   height: 100%;
   display: flex;
   justify-content: center;
   align-items: center;
-  color: rgb(51, 51, 51);
-  background-color: rgb(251, 251, 251);
+  background-color: rgb(51, 51, 51);
+  color: rgb(251, 251, 251);
   top: 50%;
   transform: translateY(-50%);
+  border-radius: 50px;
+}
+
+.Project .sectionTitle .titleContainer::after {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(51, 51, 51, 0.3);
+  border-radius: 50px;
+  z-index: -1;
+}
+
+.Project .sectionTitle .titleContainer img {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  border-radius: 50px;
+  z-index: -1;
+}
+
+.Project .sectionTitle h1 {
   font-size: 5rem;
   margin: 0;
-  border-radius: 50px;
 }
 
 .Project .sectionTitle .imageContainer {
