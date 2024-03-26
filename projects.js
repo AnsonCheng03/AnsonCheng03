@@ -99,6 +99,5 @@ gsap.to(".Project .sectionTitle .endPopUpContainer", {
     scrub: true,
     start: "top bottom",
     end: "bottom-=10% top",
-    markers: true,
   },
 });

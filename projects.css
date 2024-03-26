@@ -74,10 +74,6 @@
   text-transform: uppercase;
 }
 
-.Project .sectionTitle .endPopUpContainer h1 {
-  font-size: 3rem;
-}
-
 .Project .sectionTitle .imageContainer {
   position: relative;
   border-radius: 5px;
